@@ -4,9 +4,19 @@
 #include<vector>
 #include<algorithm>
 #include<iomanip>
-#include <limits>
-#include <climits>
+#include<limits>
+#include<climits>
 using namespace std;
+
+template <class T>
+T getMax(T a, T b) {
+    return (a > b) ? a : b;
+}
+
+template <class T>
+T getMin(T a, T b) {
+    return (a < b) ? a : b;
+}
 
 struct Student{
     string id;
@@ -127,15 +137,15 @@ void showStats(){
 
     for(auto&[key,s]:students){
         sum+=s.score;
-        maxS=max(maxS,s.score);
-        minS=min(minS,s.score);
+        maxS=getMax(maxS,s.score);
+        minS=getMin(minS,s.score);
         if(s.score>=60){
             ++pass;
         }else{
             ++fail;
         }
     }
-    double avg=sum/students.size();
+    double avg=(double)sum/students.size();
 
     cout << "全班人數  :" << students.size() << " 人\n";
     cout << "平均成績  :" << avg  << "\n";
