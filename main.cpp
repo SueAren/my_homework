@@ -55,13 +55,16 @@ void addStudent(){
             cin>>c;
             if(c=='N'){
                 cout<<"已取消\n";
+                return;
             }
         }
     cout<<"姓名:";
     cin>>name;
     cout<<"成績:";
     while(!(cin>>score)||score<0||score>100){
-        cout<<"成績輸入有誤";
+        cout<<"成績輸入有誤,請重新輸入:";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
     
     students[id]={id,name,score};
